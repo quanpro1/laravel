@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\PhotoController;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +18,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('unicode',function(){
-    return view('home');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+// Route::get('unicode',function(){
+//     return view('home');
+// });
 Route::get('san-pham',function(){
     return view('product');
+})->name('san-pham');
+Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('test1/{id}',function( Request $request, string $id){
+    return 'User '.$id.''.$request->id ;
 });
+Route::get('/user/{name}', function (string $name) {
+    return $name;
+})->where('name', '[A-Za-z]+');
+
+Route::middleware(['test:admin'])->group(function(){
+    Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+    Route::get('/profile', function () {
+        return 'abc';
+    })->name('profile');
+});
+Route::controller(UserController::class)->group(function (){
+   Route::get('/order/{id}', 'show');
+   Route::get('/order', 'store');
+});
+Route::prefix('admin')->group(function () {
+    Route::get('/users', function () {
+        // Matches The "/admin/users" URL
+    });
+    Route::get('unicode',function(){
+        return view('home');
+    });
+});
+Route::resource('photos',PhotoController::class);
+
+
 // Route::get('/',function(){
 //       $html='<h1>hoc lap trinh</h1>';
 // });
