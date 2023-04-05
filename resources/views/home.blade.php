@@ -7,18 +7,22 @@
     <title>unicode-hoc lap trinh</title>
 </head>
 <body>
-    <header>
-        <h1>header - unicode</h1>
-        <h2><?php echo $title; ?></h2>
-    </header>
-    <main>
-        <h1>noi dung - unicode</h1>
-        <h2>
-            <?php echo $content;?>
-        </h2>
-    </main>
-    <header>
-        <h1>footer - unicode</h1>
-    </header>
+    <form action="{{route('admin.update',['id'=>1])}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <input type="file" name="photo">
+
+    <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

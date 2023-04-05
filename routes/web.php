@@ -19,6 +19,12 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::post('/info', [HomeController::class,'storeInfo'])->name('info');
+Route::put('/admin/info/{id}',[HomeController::class,'update'])->name('admin.update');
+Route::get('viewinfo',function(){
+    return view('info');
+})->name('viewinfo');
+
 // Route::get('unicode',function(){
 //     return view('home');
 // });
