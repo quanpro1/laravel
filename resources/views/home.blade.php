@@ -7,7 +7,7 @@
     <title>unicode-hoc lap trinh</title>
 </head>
 <body>
-    <form action="{{route('admin.update',['id'=>1])}}" method="POST" enctype="multipart/form-data">
+    <!-- <form action="{{route('admin.update',['id'=>1])}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         
@@ -23,6 +23,12 @@
     <input type="file" name="photo">
 
     <button type="submit">Submit</button>
-    </form>
+    </form> -->
+    @if(session('status'))
+    <div class="alert alert-success">
+      {{session('status')}}    
+    </div>
+    @endif
+   
 </body>
 </html>

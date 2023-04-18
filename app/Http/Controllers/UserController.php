@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        return redirect()->route('profile');
+        // return redirect()->route('profile');
+        return 'abc';
     }
     public function store(){
         return'toi la store';
