@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>dqwdd</h1>
     {{old('name')}}
 </body>
 </html>
