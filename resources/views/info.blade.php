@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>dqwdd</h1>
+    <h2>dasdasdsad</h2>
     {{old('name')}}
 </body>
 </html>
